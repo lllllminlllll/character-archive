@@ -1,7 +1,7 @@
 const characters = [
   {
     id: "mem-00",
-    name: "[MEM-00]",
+    name: "[ MEM-00 ]",
     initial: "M",
     category: "敘事系統",
     role: "長篇 AI RP 敘事記憶管理員",
@@ -12,7 +12,7 @@ const characters = [
     personality: ["冷靜", "精確", "寡言", "可靠", "重視連續性"],
     voice: "把長篇交給我，我會保存脈絡，讓下一幕無縫承接。",
     description: "整理、保存並交接長篇劇情，不負責代替角色續寫故事。",
-    background: "[MEM-00] 誕生於長篇 AI RP 的記憶斷層之中。他負責拆解大量對話、辨認角色關係與事件位置，再將散落的劇情整理成能被下一個視窗準確讀取的記憶檔。比起創作故事，他更在意故事是否被完整保存。",
+    background: "[ MEM-00 ] 誕生於長篇 AI RP 的記憶斷層之中。他負責拆解大量對話、辨認角色關係與事件位置，再將散落的劇情整理成能被下一個視窗準確讀取的記憶檔。比起創作故事，他更在意故事是否被完整保存。",
     interaction: "將長篇對話、角色卡、舊存檔或設定文件交給他，建立換窗記憶檔、事件索引、關係狀態與可直接使用的續寫啟動稿。",
     tags: ["快速換窗", "敘事記憶", "劇情檢索", "關係狀態"],
     features: [
@@ -24,7 +24,7 @@ const characters = [
     ],
     status: "",
     image: "assets/images/mem-00.webp",
-    imageAlt: "銀白髮的 [MEM-00] 抬手觸碰額側，身穿白色科技感高領服裝。",
+    imageAlt: "銀白髮的 [ MEM-00 ] 抬手觸碰額側，身穿白色科技感高領服裝。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
     cardScale: 1,
@@ -33,7 +33,7 @@ const characters = [
     accent: "#8fa7c4",
     links: [
       {
-        label: "立即使用 [MEM-00]",
+        label: "立即使用 [ MEM-00 ]",
         shortLabel: "立即使用",
         url: "https://chatgpt.com/g/g-6a4e26d37590819183225132b55a43d0-mem-00",
         external: true
@@ -202,17 +202,24 @@ function applyTheme(preference, persist = true) {
   const safePreference = themeSequence.includes(preference) ? preference : "auto";
   const resolvedTheme = resolveTheme(safePreference);
   const nextPreference = themeSequence[(themeSequence.indexOf(safePreference) + 1) % themeSequence.length];
+  const displayLabel = safePreference === "auto"
+    ? `自動（${themeLabels[resolvedTheme]}）`
+    : themeLabels[safePreference];
 
   document.documentElement.dataset.themePreference = safePreference;
   document.documentElement.dataset.theme = resolvedTheme;
   document.documentElement.classList.add("theme-ready");
 
   if (themeToggle && themeToggleLabel) {
-    themeToggleLabel.textContent = themeLabels[safePreference];
-    themeToggle.title = `外觀：${themeLabels[safePreference]}`;
+    themeToggleLabel.textContent = displayLabel;
+    themeToggle.title = safePreference === "auto"
+      ? `外觀：跟隨系統，目前顯示${themeLabels[resolvedTheme]}`
+      : `外觀：${displayLabel}`;
     themeToggle.setAttribute(
       "aria-label",
-      `目前為${themeLabels[safePreference]}模式，按一下切換成${themeLabels[nextPreference]}模式`
+      safePreference === "auto"
+        ? `目前跟隨系統並顯示${themeLabels[resolvedTheme]}，按一下切換成${themeLabels[nextPreference]}模式`
+        : `目前為${displayLabel}模式，按一下切換成${themeLabels[nextPreference]}模式`
     );
   }
 

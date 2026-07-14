@@ -259,8 +259,8 @@ html[data-theme="dark"] .dialog-function-tags .tag {
   margin: 0;
   font-size: clamp(54px, 7.4vw, 108px);
   font-weight: 400;
-  letter-spacing: -.075em;
-  line-height: .94;
+  letter-spacing: -.018em;
+  line-height: .97;
 }
 
 .hero-intro {
@@ -604,7 +604,7 @@ html[data-theme="dark"] .dialog-function-tags .tag {
   margin: 0;
   font-size: clamp(44px, 5vw, 74px);
   font-weight: 400;
-  letter-spacing: -.075em;
+  letter-spacing: -.025em;
   line-height: .95;
 }
 
@@ -876,7 +876,7 @@ html[data-theme="dark"] .dialog-function-tags .tag {
 .card-content h3 {
   font-size: clamp(30px, 3.4vw, 48px);
   font-weight: 400;
-  letter-spacing: -.06em;
+  letter-spacing: -.02em;
 }
 
 .card-actions {
@@ -954,7 +954,7 @@ html[data-theme="dark"] .dialog-function-tags .tag {
 .dialog-content h2 {
   font-size: clamp(52px, 6vw, 86px);
   font-weight: 400;
-  letter-spacing: -.075em;
+  letter-spacing: -.025em;
 }
 
 .dialog-content h2:focus {
@@ -1053,18 +1053,25 @@ html[data-theme="dark"] .dialog-function-tags .tag {
 
 .threads-icon {
   position: relative;
-  display: block;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
   width: 14px;
   height: 14px;
+  min-width: 14px;
+  max-width: 14px;
+  min-height: 14px;
+  max-height: 14px;
   flex: 0 0 14px;
 }
 
 .threads-icon img {
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
   object-fit: contain;
 }
 
@@ -1083,7 +1090,18 @@ html[data-theme="dark"] .threads-icon-dark {
 .footer-threads-icon {
   width: 12px;
   height: 12px;
+  min-width: 12px;
+  max-width: 12px;
+  min-height: 12px;
+  max-height: 12px;
   flex-basis: 12px;
+}
+
+.footer-threads-icon img {
+  width: 12px !important;
+  height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
 }
 
 .footer-links a {
