@@ -24,11 +24,11 @@ const characters = [
     ],
     status: "",
     image: "assets/images/mem-00.webp",
-    imageAlt: "白髮、銀灰眼的 [MEM-00]，身穿白色科技感服裝，周圍浮現半透明資料介面。",
+    imageAlt: "銀白髮的 [MEM-00] 抬手觸碰額側，身穿白色科技感高領服裝。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
-    cardScale: 1.02,
-    dialogScale: 1.01,
+    cardScale: 1,
+    dialogScale: 1,
     tones: ["#e8eef6", "#aebed2"],
     accent: "#8fa7c4",
     links: [
@@ -65,11 +65,11 @@ const characters = [
     ],
     status: "",
     image: "assets/images/sean.webp",
-    imageAlt: "戴圓框眼鏡的思承坐在電腦前，以鋼筆校閱稿件。",
-    cardPosition: "50% 24%",
-    dialogPosition: "50% 24%",
-    cardScale: 1.02,
-    dialogScale: 1.01,
+    imageAlt: "戴眼鏡的思承手持咖啡，在筆記型電腦前工作。",
+    cardPosition: "50% 30%",
+    dialogPosition: "50% 30%",
+    cardScale: 1,
+    dialogScale: 1,
     tones: ["#ece5da", "#c9b69f"],
     accent: "#9f7f63",
     links: [
@@ -100,11 +100,11 @@ const characters = [
     features: [],
     status: "待發佈",
     image: "assets/images/jiang-huaiyu.webp",
-    imageAlt: "黑髮的江淮宇在日光與綠植間抱著阮，低頭凝視琴弦。",
-    cardPosition: "58% 28%",
-    dialogPosition: "56% 22%",
-    cardScale: 1.30,
-    dialogScale: 1.12,
+    imageAlt: "黑髮的江淮宇身處書架與綠植間，在日光下注視前方。",
+    cardPosition: "50% 30%",
+    dialogPosition: "50% 30%",
+    cardScale: 1,
+    dialogScale: 1,
     tones: ["#e7e0c8", "#b6aa7c"],
     accent: "#8f8158",
     links: []
@@ -118,8 +118,6 @@ const searchInput = document.querySelector("#search-input");
 const resultNote = document.querySelector("#result-note");
 const characterCount = document.querySelector("#character-count");
 const seriesCount = document.querySelector("#series-count");
-const pageProgress = document.querySelector("#page-progress");
-const siteHeader = document.querySelector(".site-header");
 
 const dialog = document.querySelector("#character-dialog");
 const dialogClose = document.querySelector("#dialog-close");
@@ -142,7 +140,6 @@ const dialogActions = document.querySelector("#dialog-actions");
 
 let activeCategory = "全部";
 let revealObserver;
-let scrollFrame;
 
 const icons = {
   arrowRight: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>',
@@ -343,7 +340,7 @@ function renderScrollArchive(items) {
     <section
       class="showcase-scene"
       data-scroll-scene
-      style="--scene-height:${Math.max(items.length * 92, 250)}vh"
+      data-active-index="0"
     >
       <div class="showcase-sticky">
         <header class="showcase-header">
@@ -418,36 +415,34 @@ function renderScrollArchive(items) {
     </section>
   `;
 
-  updateScrollArchive();
+  selectShowcase(0, false);
 }
 
-function updateScrollArchive() {
-  scrollFrame = undefined;
+function selectShowcase(nextIndex, animate = true) {
   const scene = scrollArchive.querySelector("[data-scroll-scene]");
   const portraits = [...scrollArchive.querySelectorAll("[data-showcase-panel]")];
   const copies = [...scrollArchive.querySelectorAll("[data-showcase-copy]")];
   const thumbs = [...scrollArchive.querySelectorAll("[data-showcase-jump]")];
   if (!scene || !portraits.length) return;
 
-  const sceneRect = scene.getBoundingClientRect();
-  const travelY = Math.max(sceneRect.height - window.innerHeight, 1);
-  const progress = Math.max(0, Math.min(1, -sceneRect.top / travelY));
-  const position = progress * Math.max(portraits.length - 1, 0);
-  const activeIndex = Math.min(portraits.length - 1, Math.max(0, Math.round(position)));
+  const previousIndex = Number(scene.dataset.activeIndex || 0);
+  const activeIndex = Math.min(portraits.length - 1, Math.max(0, nextIndex));
+  const direction = activeIndex === previousIndex ? 0 : activeIndex > previousIndex ? 1 : -1;
+  const progress = portraits.length > 1 ? activeIndex / (portraits.length - 1) : 1;
+  scene.dataset.activeIndex = String(activeIndex);
+  scene.classList.toggle("is-switching", animate && direction !== 0);
 
   portraits.forEach((portrait, index) => {
-    const delta = index - position;
-    const focus = Math.max(0, 1 - Math.abs(delta));
-    portrait.style.setProperty("--focus", focus.toFixed(3));
-    portrait.style.setProperty("--portrait-y", `${(Math.sign(delta) * 42).toFixed(1)}px`);
+    const isActive = index === activeIndex;
+    portrait.style.setProperty("--focus", isActive ? "1" : "0");
+    portrait.style.setProperty("--portrait-y", `${isActive ? 0 : (index < activeIndex ? -1 : 1) * 32}px`);
     portrait.classList.toggle("is-active", index === activeIndex);
   });
 
   copies.forEach((copy, index) => {
-    const delta = index - position;
-    const focus = Math.max(0, 1 - Math.abs(delta) * 1.35);
-    copy.style.setProperty("--focus", focus.toFixed(3));
-    copy.style.setProperty("--copy-x", `${(Math.sign(delta) * 28).toFixed(1)}px`);
+    const isActive = index === activeIndex;
+    copy.style.setProperty("--focus", isActive ? "1" : "0");
+    copy.style.setProperty("--copy-x", `${isActive ? 0 : (index < activeIndex ? -1 : 1) * 22}px`);
     copy.classList.toggle("is-active", index === activeIndex);
     copy.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
     copy.toggleAttribute("inert", index !== activeIndex);
@@ -465,11 +460,10 @@ function updateScrollArchive() {
   if (currentIndex) currentIndex.textContent = String(activeIndex + 1).padStart(2, "0");
   if (progressBar) progressBar.style.transform = `scaleX(${progress.toFixed(3)})`;
   if (activeName) activeName.textContent = characters.find((item) => item.id === portraits[activeIndex]?.dataset.characterId)?.name || "";
-}
 
-function requestScrollArchiveUpdate() {
-  if (scrollFrame || scrollArchive.hidden) return;
-  scrollFrame = requestAnimationFrame(updateScrollArchive);
+  if (animate && direction !== 0) {
+    window.setTimeout(() => scene.classList.remove("is-switching"), 520);
+  }
 }
 
 function renderDialogLinks(links = []) {
@@ -544,6 +538,8 @@ function openCharacter(characterId) {
   renderDialogFeatures(character.features);
   renderDialogLinks(character.links);
   dialog.showModal();
+  dialogName.tabIndex = -1;
+  dialogName.focus({ preventScroll: true });
 }
 
 function createRipple(button, event) {
@@ -612,13 +608,6 @@ function observeRevealElements() {
   });
 }
 
-function updatePageProgress() {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-  pageProgress.style.width = `${Math.min(progress, 1) * 100}%`;
-  siteHeader.classList.remove("is-compact");
-}
-
 function updatePointerGlow(event) {
   document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
   document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
@@ -656,17 +645,7 @@ grid.addEventListener("click", (event) => {
 scrollArchive.addEventListener("click", (event) => {
   const jump = event.target.closest("[data-showcase-jump]");
   if (jump) {
-    const scene = scrollArchive.querySelector("[data-scroll-scene]");
-    const total = scrollArchive.querySelectorAll("[data-showcase-jump]").length;
-    if (!scene || total < 2) return;
-
-    const sceneTop = scene.getBoundingClientRect().top + window.scrollY;
-    const travelY = Math.max(scene.offsetHeight - window.innerHeight, 1);
-    const progress = Number(jump.dataset.showcaseJump) / (total - 1);
-    window.scrollTo({
-      top: sceneTop + travelY * progress,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
-    });
+    selectShowcase(Number(jump.dataset.showcaseJump));
     return;
   }
 
@@ -682,13 +661,6 @@ dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
-window.addEventListener("scroll", () => {
-  updatePageProgress();
-  requestScrollArchiveUpdate();
-}, { passive: true });
-
-window.addEventListener("resize", requestScrollArchiveUpdate, { passive: true });
-
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
   window.addEventListener("pointermove", updatePointerGlow, { passive: true });
 }
@@ -701,4 +673,3 @@ document.querySelectorAll(".hero, .section-heading, .filter-row, .about-section"
 renderFilters();
 renderCharacters();
 observeRevealElements();
-updatePageProgress();
