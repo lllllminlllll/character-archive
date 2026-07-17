@@ -23,8 +23,9 @@ const characters = [
       "另製作大綱、摘要、關係演進與完整存檔"
     ],
     status: "",
-    image: "assets/images/mem-00.webp",
-    imageAlt: "銀白髮的 [ MEM-00 ] 抬手觸碰額側，身穿白色科技感高領服裝。",
+    image: "assets/images/mem-00.webp?v=20260717-motion-pair",
+    motionVideo: "assets/video/mem-00-hover.mp4?v=20260717-motion-pair",
+    imageAlt: "銀白髮的 [ MEM-00 ] 側臉仰望，身穿白色科技感高領服裝，周圍浮動透明介面。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
     cardScale: 1,
@@ -64,7 +65,8 @@ const characters = [
       "檢查重複內容、殘留檔名與不自然 AI 用語"
     ],
     status: "",
-    image: "assets/images/sean.webp",
+    image: "assets/images/sean.webp?v=20260717-motion-set",
+    motionVideo: "assets/video/sean-hover.mp4?v=20260717-motion-set",
     imageAlt: "戴眼鏡的思承手持咖啡，在筆記型電腦前工作。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
@@ -105,8 +107,9 @@ const characters = [
       "診斷生成結果，區分不像與不好看並局部修正"
     ],
     status: "",
-    image: "assets/images/lynn.jpg",
-    imageAlt: "灰紫髮的黎野坐在設計工作桌前，手持觸控筆，身後螢幕顯示視覺稿件。",
+    image: "assets/images/lynn.webp?v=20260717-motion-set",
+    motionVideo: "assets/video/lynn-hover.mp4?v=20260717-motion-set",
+    imageAlt: "灰紫髮的黎野在設計工作桌前側身望向鏡頭，手持觸控筆。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
     cardScale: 1,
@@ -140,7 +143,8 @@ const characters = [
     tags: ["田野調查", "地方文史", "慢熱互動"],
     features: [],
     status: "待發佈",
-    image: "assets/images/jiang-huaiyu.webp",
+    image: "assets/images/jiang-huaiyu.webp?v=20260717-motion-set",
+    motionVideo: "assets/video/jiang-huaiyu-hover.mp4?v=20260717-motion-set",
     imageAlt: "黑髮的江淮宇在書架與綠植之間，微微靠近鏡頭。",
     cardPosition: "50% 30%",
     dialogPosition: "50% 30%",
@@ -325,6 +329,25 @@ function renderCardActions(character) {
   `;
 }
 
+function renderMotionVideo(character) {
+  if (!character.motionVideo) return "";
+
+  return `
+    <video
+      class="character-motion"
+      data-motion-video
+      src="${escapeHtml(character.motionVideo)}"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+      style="object-position:${character.cardPosition || character.dialogPosition || "50% 50%"}"
+    ></video>
+  `;
+}
+
 function renderInteractionDemo() {
   const cards = [
     { label: "NEXT CHARACTER", title: "新角色檔案", subtitle: "角色形象與資料預留位置", detail: "新角色公開後，這裡會放入正式形象照、基本定位與角色入口。" },
@@ -408,6 +431,7 @@ function renderCharacters() {
             decoding="async"
             style="object-position:${character.cardPosition || character.dialogPosition || "50% 50%"}"
           >
+          ${renderMotionVideo(character)}
           <span class="card-image-overlay" aria-hidden="true"></span>
           <span class="card-index">FILE ${String(index + 1).padStart(2, "0")}</span>
         </div>
@@ -474,6 +498,7 @@ function renderScrollArchive(items) {
                 style="--showcase-accent:${character.accent};--showcase-tone:${character.tones[0]};--focus:${index === 0 ? 1 : 0};--portrait-y:${index === 0 ? 0 : 42}px"
               >
                 <img src="${escapeHtml(character.image)}" alt="${escapeHtml(character.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async" style="object-position:${character.cardPosition || "50% 50%"};--image-scale:${character.cardScale || 1.02};--image-hover-scale:${(character.cardScale || 1.02) + 0.02}">
+                ${renderMotionVideo(character)}
               </button>
             `).join("")}
           </div>
@@ -511,6 +536,7 @@ function renderScrollArchive(items) {
   `;
 
   selectShowcase(0, false);
+  bindMotionVideos(scrollArchive);
 }
 
 function selectShowcase(nextIndex, animate = true) {
@@ -529,6 +555,7 @@ function selectShowcase(nextIndex, animate = true) {
 
   portraits.forEach((portrait, index) => {
     const isActive = index === activeIndex;
+    if (!isActive) pauseMotionVideo(portrait);
     portrait.style.setProperty("--focus", isActive ? "1" : "0");
     portrait.style.setProperty("--portrait-y", `${isActive ? 0 : (index < activeIndex ? -1 : 1) * 32}px`);
     portrait.classList.toggle("is-active", index === activeIndex);
@@ -647,6 +674,55 @@ function createRipple(button, event) {
   ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
 }
 
+function pauseMotionVideo(host, reset = true) {
+  const video = host?.querySelector("[data-motion-video]");
+  if (!video) return;
+
+  video.pause();
+  if (reset) {
+    try {
+      video.currentTime = 0;
+    } catch (error) {
+      // The video may not have loaded enough metadata to seek yet.
+    }
+  }
+  host.classList.remove("is-video-playing");
+}
+
+function playMotionVideo(host) {
+  const video = host?.querySelector("[data-motion-video]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!video || reduceMotion) return;
+
+  video.muted = true;
+  const playRequest = video.play();
+  if (playRequest && typeof playRequest.catch === "function") {
+    playRequest.catch(() => host.classList.remove("is-video-playing"));
+  }
+}
+
+function bindMotionVideos(scope) {
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  scope.querySelectorAll("[data-motion-video]").forEach((video) => {
+    const host = video.closest(".showcase-portrait, .card-portrait");
+    if (!host || host.dataset.motionBound === "true") return;
+
+    host.dataset.motionBound = "true";
+    video.addEventListener("playing", () => host.classList.add("is-video-playing"));
+    video.addEventListener("pause", () => host.classList.remove("is-video-playing"));
+
+    if (canHover) {
+      host.addEventListener("pointerenter", () => playMotionVideo(host));
+      host.addEventListener("pointerleave", () => pauseMotionVideo(host));
+
+      const focusTarget = host.closest("button") || host;
+      focusTarget.addEventListener("focus", () => playMotionVideo(host));
+      focusTarget.addEventListener("blur", () => pauseMotionVideo(host));
+    }
+  });
+}
+
 function bindCardInteractions() {
   const cards = grid.querySelectorAll(".character-card");
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -678,6 +754,8 @@ function bindCardInteractions() {
 
     mainButton?.addEventListener("pointerdown", (event) => createRipple(mainButton, event));
   });
+
+  bindMotionVideos(grid);
 }
 
 function observeRevealElements() {
