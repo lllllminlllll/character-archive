@@ -162,7 +162,8 @@ const characters = [
           },
           {
             label: "ChatGPT · 故事互動",
-            status: "coming-soon"
+            url: "https://chatgpt.com/g/g-6a5b8a4fcbe08191b727a95f2bbfb28c-lynn",
+            external: true
           }
         ]
       }
