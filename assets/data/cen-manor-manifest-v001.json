@@ -1,0 +1,62 @@
+{
+  "version": "v001",
+  "created_at": "2026-07-28",
+  "category": {
+    "id": "cen_manor",
+    "name": "岑家莊園"
+  },
+  "status": "draft",
+  "source": "PixAI images supplied by user",
+  "canonical_for_character_text": false,
+  "intended_use": "website_character_card",
+  "asset_role": "portrait_primary",
+  "image_spec": {
+    "format": "png",
+    "width": 848,
+    "height": 1424,
+    "aspect_ratio": "53:89",
+    "orientation": "portrait"
+  },
+  "characters": [
+    {
+      "id": "xiang_boting",
+      "name": "向帛廷",
+      "sort_order": 1,
+      "path": "暫定角色卡_v001/向帛廷_角色卡主視覺_暫定_v001.png",
+      "sha256": "df49353c77982effbc908a079ec9a3f1d9407d852d994ff5ac8a0312b483f265",
+      "alt_text": "向帛廷穿黑白家臣正裝與白手套，低頭靠近床帳，腕間垂著銀色懷錶。"
+    },
+    {
+      "id": "pei_yao",
+      "name": "裴曜",
+      "sort_order": 2,
+      "path": "暫定角色卡_v001/裴曜_角色卡主視覺_暫定_v001.png",
+      "sha256": "8f599c254e958b952ee3f22a2fc23d09773135cf7b596d35e358a368c5c7d988",
+      "alt_text": "裴曜穿深色制服俯身靠近床邊，前景托盤放著茶與可頌。"
+    },
+    {
+      "id": "wen_chen",
+      "name": "文琛",
+      "sort_order": 3,
+      "path": "暫定角色卡_v001/文琛_角色卡主視覺_暫定_v001.png",
+      "sha256": "ac5a7fa0ed19733422763311e857528980f1daa1875e9db92c4c2374dbb47a71",
+      "alt_text": "文琛穿深藍和式交領服，墨綠長髮垂落，從白色床帳間俯身注視。"
+    },
+    {
+      "id": "shu_liangyi",
+      "name": "舒良易",
+      "sort_order": 4,
+      "path": "暫定角色卡_v001/舒良易_角色卡主視覺_暫定_v001.png",
+      "sha256": "1d777b077959f4d82bd6e6a0b38644de2ff01c7d024561a93610c7c14e312783",
+      "alt_text": "舒良易穿象牙白醫療家臣制服，銀金短髮，手持聽診器靠近床邊。"
+    },
+    {
+      "id": "wu_qicheng",
+      "name": "吳祈丞",
+      "sort_order": 5,
+      "path": "暫定角色卡_v001/吳祈丞_角色卡主視覺_暫定_v001.png",
+      "sha256": "e56023f92c1a147e9929fd2fa28bbbcdf2343c2380d7e6a9c8ed96121f2b09ba",
+      "alt_text": "吳祈丞穿奶油白與焦糖棕制服，露出小虎牙笑著俯身遞上麵包托盤。"
+    }
+  ]
+}
