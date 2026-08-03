@@ -208,6 +208,152 @@ const characters = [
     links: []
   },
   {
+    id: "zhou-xiang-zhou-mi",
+    name: "周響 × 周謐",
+    initial: "周",
+    category: "原創角色",
+    role: "近未來臺灣｜晚分化雙胞胎 Omega",
+    age: "25 歲",
+    height: "181 / 179 cm",
+    occupation: "音訊企劃／建築設計師",
+    profileType: "多人關係互動",
+    personality: ["青梅竹馬", "雙胞胎", "冷暖反差", "三人關係", "慢熱拉扯"],
+    voice: "別把我排在他後面。兩個都要可以，但你得先把選擇說清楚。",
+    description: "從小一起長大的雙胞胎室友，在晚分化後，與玩家重新面對友情、渴望與三人關係的邊界。",
+    background: "周響與周謐是相差八分鐘出生的同卵雙胞胎，也是玩家從幼稚園一路相伴至今的青梅竹馬。三人畢業後在臺北近郊共同生活，早已像家人般熟悉彼此。二十五歲那年，謐先晚分化為 Omega，響也在三週後受雙生共鳴影響完成分化。原本能被解釋成習慣的依賴，從此有了氣味、週期與再也無法忽視的身體反應。",
+    interactionTitle: "故事開端",
+    interaction: "故事從謐出院後的第一夜開始。玩家是與兩人高度相容的成年 Alpha，生理性別與性別認同不限。你可以靠近響、靠近謐，或與兄弟兩人逐步建立關係；每條路線都會保留嫉妒、選擇與共同生活改變後的後果。",
+    tagsLabel: "故事標籤",
+    tags: ["近未來臺灣", "雙胞胎 Omega", "青梅竹馬", "三人關係"],
+    featuresTitle: "故事走向",
+    features: [
+      "從三人合租的日常出發，讓分化後的距離變化逐步浮現。",
+      "可選擇周響、周謐或三人關係，每條路線都會改變兄弟與家庭結構。",
+      "晚分化、雙生共鳴與 ABO 醫療制度會持續影響事件與角色反應。",
+      "角色會記得玩家的偏袒、承諾與界線，不以一次告白跳過關係磨合。"
+    ],
+    status: "公開使用中",
+    image: "assets/images/zhou-xiang-zhou-mi.jpg?v=20260803-v003",
+    motionVideo: "assets/video/zhou-xiang-zhou-mi-hover.mp4?v=20260803-motion-v001",
+    imageAlt: "淺棕髮的雙胞胎周謐與周響在床上靠坐；左側周謐膚色白淨、穿黑色襯衫，右側周響膚色健康、穿白色襯衫。",
+    cardPosition: "50% 28%",
+    dialogPosition: "50% 25%",
+    dialogFit: "cover",
+    cardScale: 1,
+    dialogScale: 1,
+    tones: ["#ddd8d2", "#9c8c7d"],
+    accent: "#8f7764",
+    links: [
+      {
+        label: "ChatGPT · 周響／周謐故事互動",
+        shortLabel: "進入故事",
+        url: "https://chatgpt.com/g/g-6a6cb0cb066481919cb63f9b154e5532-zhou-xiang-zhou-mi",
+        external: true
+      }
+    ],
+    modes: [
+      {
+        id: "together",
+        label: "共同設定"
+      },
+      {
+        id: "xiang",
+        label: "周響",
+        name: "周響",
+        role: "哥哥｜音訊企劃兼外景製作",
+        height: "181 cm",
+        occupation: "音訊內容公司企劃",
+        profileType: "晚分化 Omega",
+        personality: ["外向", "機敏", "黏人", "嘴硬", "害怕被忽略"],
+        voice: "不要因為謐需要你，就假裝我不會需要。我只是不想排在他後面。",
+        description: "總用玩笑撐起場面，也最擅長把真正害怕的事藏在過度輕鬆的語氣裡。",
+        background: "周響是早出生八分鐘的哥哥。淺棕色短髮由左向右分，右耳戴一枚小銀圈；健康暖膚色與修長精壯的體格讓他在雙胞胎中很好辨認。他從事音訊節目企劃與外景製作，反應快、話多、照顧欲強，卻極度不喜歡別人以哥哥的身分要求他退讓。",
+        interactionTitle: "與玩家的關係",
+        interaction: "響習慣自然地靠近玩家、共享衣物與生活細節。謐先分化後，他仍用玩笑試探玩家的反應；輪到自己完成晚分化，他才不得不承認，自己最怕的不是成為 Omega，而是永遠排在弟弟之後。",
+        tags: ["哥哥", "外向黏人", "玩笑試探", "嫉妒佔位"],
+        featuresTitle: "互動片段",
+        features: [
+          "玩家與謐獨處太久時，他會找理由加入，把三人的事重新拉回共同空間。",
+          "吃醋時先用玩笑偷問真話，真正受傷後反而會忙著煮飯、收拾或外出工作。",
+          "喜歡直接而日常的接觸，也會故意把玩家的衣物穿出自己的氣味。",
+          "他可以先承認想念與主動靠近，但不接受出於補償或哥哥責任的親密。"
+        ]
+      },
+      {
+        id: "mi",
+        label: "周謐",
+        name: "周謐",
+        role: "弟弟｜建築事務所設計師",
+        height: "179 cm",
+        occupation: "建築與空間設計師",
+        profileType: "晚分化 Omega",
+        personality: ["安靜", "敏銳", "自尊高", "克制", "行動明確"],
+        voice: "兩個都要可以。你得說清楚，你要的是我們，還是你不敢失去任何一個人。",
+        description: "把依賴包裝成生活習慣，直到身體先替他記住玩家，再也無法用沉默維持原來的距離。",
+        background: "周謐是晚出生八分鐘的弟弟，也是先完成晚分化的人。淺棕色短髮由右向左分，膚色白淨偏冷，身形纖瘦骨感。他任職於小型建築事務所，部分時間居家工作；話不多，觀察細，總能比旁人更早發現家中物品的位置與玩家情緒的變化。",
+        interactionTitle: "與玩家的關係",
+        interaction: "第一次發情讓謐對玩家留下極深的氣味與身體記憶。出院後，他不願把依賴只解釋成醫療需求，也不接受曖昧成為長期逃避。無論玩家選擇他或兩兄弟，他都會要求承諾、界線與共同生活的位置被清楚說明。",
+        tags: ["弟弟", "安靜佔位", "氣味依賴", "關係明確"],
+        featuresTitle: "互動片段",
+        features: [
+          "他會記住玩家晚回家的分鐘數，不催促，只在客廳等人回來。",
+          "吃醋時不搶話，而是先一步改變安排、收走衣物或站到玩家身邊。",
+          "需要安撫時不一定開口，更可能抱著玩家的外套停在房門外。",
+          "一旦承認慾望，他不喜歡無止境試探，也不讓玩家用漂亮說法逃避選擇。"
+        ]
+      }
+    ]
+  },
+  {
+    id: "cen-manor-ensemble",
+    name: "岑氏莊園",
+    initial: "岑",
+    category: "岑家莊園",
+    role: "多人路線｜岑家五席共演",
+    age: "22-32 歲",
+    height: "177-189 cm",
+    occupation: "岑家莊園五席",
+    profileType: "多人群像互動",
+    personality: ["群像互動", "多線關係", "莊園日常", "家族祕密", "自由選擇"],
+    voice: "五席都已經到齊。這次，你要先叫誰的名字？",
+    description: "與岑家五席共同生活，在莊園日常、家族事件與彼此牽制的關係中選擇自己的路線。",
+    background: "你以岑家家主的身分回到莊園。第一席向帛廷掌管全局，裴曜負責安全，文琛保管家族法務與檔案，舒良易接手健康管理，吳祈丞維持生活與環境。五人各自守著職責，也各有不能只用忠誠解釋的選擇。",
+    interactionTitle: "故事開端",
+    interaction: "從回到岑氏莊園的第一天開始，你可以同時與五席相處、指定陪同行程、追查家族事件，或讓不同角色加入同一場景。你的決定會改變他們之間的合作、競爭與關係距離。",
+    tagsLabel: "故事標籤",
+    tags: ["多人路線", "五席共演", "莊園日常", "關係分歧"],
+    featuresTitle: "故事走向",
+    features: [
+      "自由指定一位或多位家臣陪同，讓單人互動自然延伸為群像場景。",
+      "在莊園管理、家族祕密與突發事件中，看見五席不同的立場與處理方式。",
+      "你的信任、偏袒與選擇會被不同角色記住，也會改變他們彼此的態度。",
+      "不必預先鎖定路線，可以從共同生活開始，再決定想靠近誰。"
+    ],
+    status: "公開使用中",
+    image: "assets/images/cen-manor/cen-manor-ensemble.jpg?v=20260803-v003",
+    cardImage: "assets/images/cen-manor/cen-manor-ensemble.jpg?v=20260803-v003",
+    thumbnailImage: "assets/images/cen-manor/cen-manor-ensemble.jpg?v=20260803-v003",
+    motionVideo: "assets/video/cen-manor/cen-manor-ensemble-hover.mp4?v=20260803-motion-v001",
+    imageAlt: "岑氏莊園多人路線，向帛廷、裴曜、文琛、舒良易與吳祈丞五位家臣在書房中靠近鏡頭。",
+    cardImageAlt: "岑氏莊園多人路線，五位家臣在書房中靠近鏡頭。",
+    cardPosition: "50% 50%",
+    dialogPosition: "50% 50%",
+    dialogFit: "cover",
+    imageLightbox: true,
+    cardScale: 1,
+    dialogScale: 1,
+    tones: ["#dedbd4", "#85827b"],
+    accent: "#68655f",
+    links: [
+      {
+        label: "Heartbeat · 岑氏莊園多人互動",
+        shortLabel: "多人路線",
+        url: "https://heartbeat-app.net/characters/32db06ad-3483-41e0-a29a-e1f9348ef564",
+        external: true
+      }
+    ]
+  },
+  {
     id: "xiang-boting",
     name: "向帛廷",
     initial: "向",
@@ -218,7 +364,7 @@ const characters = [
     occupation: "莊園總管／資產代理",
     profileType: "岑家五席・第一席",
     personality: ["成熟", "嚴謹", "克制", "自律", "責任感"],
-    voice: "行程都替你排好了。至於我——等你真的不需要第一席時，再告訴我該站在哪裡。",
+    voice: "行程都替你排好了。至於我，等你真的不需要第一席時，再告訴我該站在哪裡。",
     description: "管理岑家莊園、私人行程與家族資產；永遠比任何人更早把一切安排妥當。",
     background: "向帛廷是岑家莊園第一席，也是維持整座莊園運作的人。他掌管行程、資產與對外協調，習慣把個人情緒收在職責之後。精確與克制讓他顯得難以接近，真正動搖他的，卻是有人開始在意職位之外的他。",
     interactionTitle: "故事開端",
@@ -232,7 +378,7 @@ const characters = [
       "當家族利益與你的意願衝突時，他第一次讓決策停頓。",
       "被問起是否會留下時，他沉默片刻，沒有再用職責回答。"
     ],
-    status: "暫定預覽",
+    status: "公開使用中",
     image: "assets/images/cen-manor/xiang-boting.png?v=20260728-v001",
     motionVideo: "assets/video/cen-manor/xiang-boting-hover.mp4?v=20260728-motion-v001",
     imageAlt: "向帛廷穿黑白家臣正裝與白手套，低頭靠近床帳，腕間垂著銀色懷錶。",
@@ -242,7 +388,14 @@ const characters = [
     dialogScale: 1,
     tones: ["#deddd9", "#989996"],
     accent: "#70716d",
-    links: []
+    links: [
+      {
+        label: "Heartbeat · 向帛廷故事互動",
+        shortLabel: "開始互動",
+        url: "https://heartbeat-app.net/characters/d4418320-82dd-45fc-a450-55c76d641a1d",
+        external: true
+      }
+    ]
   },
   {
     id: "pei-yao",
@@ -269,7 +422,7 @@ const characters = [
       "你試圖獨自行動時，他皺眉跟上，卻沒有真正阻止你。",
       "確認危機解除後，他仍站在門外，比平常多守了一會。"
     ],
-    status: "暫定預覽",
+    status: "公開使用中",
     image: "assets/images/cen-manor/pei-yao.png?v=20260728-v001",
     motionVideo: "assets/video/cen-manor/pei-yao-hover.mp4?v=20260728-motion-v001",
     imageAlt: "裴曜穿深色制服俯身靠近床邊，前景托盤放著茶與可頌。",
@@ -279,7 +432,14 @@ const characters = [
     dialogScale: 1,
     tones: ["#d7d6d0", "#77776e"],
     accent: "#606158",
-    links: []
+    links: [
+      {
+        label: "Heartbeat · 裴曜故事互動",
+        shortLabel: "開始互動",
+        url: "https://heartbeat-app.net/characters/00024eb8-26e3-41f6-bcf9-58a53324b62a",
+        external: true
+      }
+    ]
   },
   {
     id: "wen-chen",
@@ -306,7 +466,7 @@ const characters = [
       "談到家族舊事時，他替你續上冷掉的茶，觀察你是否仍想追問。",
       "終於交出關鍵檔案前，他只確認一件事：「看完之後，你還會回來嗎？」"
     ],
-    status: "暫定預覽",
+    status: "公開使用中",
     image: "assets/images/cen-manor/wen-chen.png?v=20260728-v001",
     motionVideo: "assets/video/cen-manor/wen-chen-hover.mp4?v=20260728-motion-v001",
     imageAlt: "文琛穿深藍和式交領服，墨綠長髮垂落，從白色床帳間俯身注視。",
@@ -316,7 +476,14 @@ const characters = [
     dialogScale: 1,
     tones: ["#d7dcda", "#778783"],
     accent: "#536762",
-    links: []
+    links: [
+      {
+        label: "Heartbeat · 文琛故事互動",
+        shortLabel: "開始互動",
+        url: "https://heartbeat-app.net/characters/830e90b7-2147-4d86-9771-62c9470bd45a",
+        external: true
+      }
+    ]
   },
   {
     id: "shu-liangyi",
@@ -343,7 +510,7 @@ const characters = [
       "檢查結束後仍沒有離開，直到你先問他是不是還有事。",
       "你說已經不需要照顧時，他的回答比平常慢了半秒。"
     ],
-    status: "暫定預覽",
+    status: "公開使用中",
     image: "assets/images/cen-manor/shu-liangyi.png?v=20260728-v001",
     motionVideo: "assets/video/cen-manor/shu-liangyi-hover.mp4?v=20260728-motion-v001",
     imageAlt: "舒良易穿象牙白醫療家臣制服，銀金短髮，手持聽診器靠近床邊。",
@@ -353,7 +520,14 @@ const characters = [
     dialogScale: 1,
     tones: ["#e4e1db", "#b2aaa0"],
     accent: "#918a81",
-    links: []
+    links: [
+      {
+        label: "Heartbeat · 舒良易故事互動",
+        shortLabel: "開始互動",
+        url: "https://heartbeat-app.net/characters/c7730516-33dd-404f-be21-91e4f9a11d07",
+        external: true
+      }
+    ]
   },
   {
     id: "wu-qicheng",
@@ -380,7 +554,7 @@ const characters = [
       "被你問起規矩時，他笑著把側門鑰匙放到你掌心。",
       "你真的走出門後，他沒有追，只在原地問：「那你還會回來吧？」"
     ],
-    status: "暫定預覽",
+    status: "公開使用中",
     image: "assets/images/cen-manor/wu-qicheng.png?v=20260728-v001",
     motionVideo: "assets/video/cen-manor/wu-qicheng-hover.mp4?v=20260728-motion-v001",
     imageAlt: "吳祈丞穿奶油白與焦糖棕制服，露出小虎牙笑著俯身遞上麵包托盤。",
@@ -390,7 +564,14 @@ const characters = [
     dialogScale: 1,
     tones: ["#e6ddd2", "#b79677"],
     accent: "#9d7651",
-    links: []
+    links: [
+      {
+        label: "Heartbeat · 吳祈丞故事互動",
+        shortLabel: "開始互動",
+        url: "https://heartbeat-app.net/characters/d73c75b2-132a-4761-8331-6684cc165bee",
+        external: true
+      }
+    ]
   }
 ];
 
@@ -407,7 +588,11 @@ const themeColor = document.querySelector("#theme-color");
 
 const dialog = document.querySelector("#character-dialog");
 const dialogClose = document.querySelector("#dialog-close");
+const dialogPortrait = document.querySelector("#dialog-portrait");
 const dialogImage = document.querySelector("#dialog-image");
+const imageLightbox = document.querySelector("#image-lightbox");
+const imageLightboxClose = document.querySelector("#image-lightbox-close");
+const imageLightboxImage = document.querySelector("#image-lightbox-image");
 const dialogCategory = document.querySelector("#dialog-category");
 const dialogName = document.querySelector("#dialog-name");
 const dialogRole = document.querySelector("#dialog-role");
@@ -521,6 +706,20 @@ function getFilteredCharacters() {
 
   return characters.filter((character) => {
     const matchesCategory = activeCategory === "全部" || character.category === activeCategory;
+    const modeContent = (character.modes || []).flatMap((mode) => [
+      mode.label,
+      mode.name,
+      mode.role,
+      mode.occupation,
+      mode.profileType,
+      mode.voice,
+      mode.description,
+      mode.background,
+      mode.interaction,
+      ...(mode.personality || []),
+      ...(mode.tags || []),
+      ...(mode.features || [])
+    ]);
     const haystack = [
       character.name,
       character.category,
@@ -535,7 +734,8 @@ function getFilteredCharacters() {
       character.interaction,
       ...character.personality,
       ...character.tags,
-      ...character.features
+      ...character.features,
+      ...modeContent
     ].join(" ").toLocaleLowerCase("zh-Hant");
 
     return matchesCategory && (!keyword || haystack.includes(keyword));
@@ -591,6 +791,21 @@ function renderMotionVideo(character) {
       style="object-position:${character.cardPosition || character.dialogPosition || "50% 50%"}"
     ></video>
   `;
+}
+
+function getCardImage(character) {
+  return character.cardImage || character.image;
+}
+
+function getThumbnailImage(character) {
+  return character.thumbnailImage || getCardImage(character);
+}
+
+function getFeatureCountLabel(character) {
+  if (!character.features?.length) return "資料整理中";
+  if (character.featuresTitle === "互動片段") return `${character.features.length} 個片段`;
+  if (character.featuresTitle === "故事走向") return `${character.features.length} 條走向`;
+  return `${character.features.length} 項功能`;
 }
 
 function renderInteractionDemo() {
@@ -670,8 +885,8 @@ function renderCharacters() {
       <button class="card-button" type="button" data-character-id="${character.id}" aria-label="查看 ${escapeHtml(character.name)} 功能簡介">
         <div class="card-portrait">
           <img
-            src="${escapeHtml(character.image)}"
-            alt="${escapeHtml(character.imageAlt)}"
+            src="${escapeHtml(getCardImage(character))}"
+            alt="${escapeHtml(character.cardImageAlt || character.imageAlt)}"
             loading="lazy"
             decoding="async"
             style="object-position:${character.cardPosition || character.dialogPosition || "50% 50%"}"
@@ -687,7 +902,7 @@ function renderCharacters() {
           ${character.voice ? `<p class="card-voice">「${escapeHtml(character.voice)}」</p>` : ""}
           <div class="card-meta">
             ${character.status ? `<span>${escapeHtml(character.status)}</span>` : ""}
-            <span>${character.features.length ? `${character.features.length} 項功能` : "資料整理中"}</span>
+            <span>${escapeHtml(getFeatureCountLabel(character))}</span>
           </div>
         </div>
       </button>
@@ -726,7 +941,7 @@ function renderScrollArchive(items) {
                 aria-label="切換至 ${escapeHtml(character.name)}"
                 aria-current="${index === 0 ? "true" : "false"}"
               >
-                <img src="${escapeHtml(character.image)}" alt="" loading="lazy" decoding="async" style="object-position:${character.cardPosition || "50% 50%"};--thumb-scale:${character.cardScale || 1.02}">
+                <img src="${escapeHtml(getThumbnailImage(character))}" alt="" loading="lazy" decoding="async" style="object-position:${character.cardPosition || "50% 50%"};--thumb-scale:${character.cardScale || 1.02}">
                 <span>${String(index + 1).padStart(2, "0")}</span>
               </button>
             `).join("")}
@@ -742,7 +957,7 @@ function renderScrollArchive(items) {
                 aria-label="查看 ${escapeHtml(character.name)} 的完整資料"
                 style="--showcase-accent:${character.accent};--showcase-tone:${character.tones[0]};--focus:${index === 0 ? 1 : 0};--portrait-y:${index === 0 ? 0 : 42}px"
               >
-                <img src="${escapeHtml(character.image)}" alt="${escapeHtml(character.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async" style="object-position:${character.cardPosition || "50% 50%"};--image-scale:${character.cardScale || 1.02};--image-hover-scale:${(character.cardScale || 1.02) + 0.02}">
+                <img src="${escapeHtml(getCardImage(character))}" alt="${escapeHtml(character.cardImageAlt || character.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async" style="object-position:${character.cardPosition || "50% 50%"};--image-scale:${character.cardScale || 1.02};--image-hover-scale:${(character.cardScale || 1.02) + 0.02}">
                 ${renderMotionVideo(character)}
               </button>
             `).join("")}
@@ -1066,15 +1281,38 @@ function openCharacter(characterId, modeId = "") {
   dialog.style.setProperty("--dialog-tone-b", character.tones[1]);
   dialog.style.setProperty("--dialog-accent", character.accent);
   dialog.style.setProperty("--dialog-image-scale", character.dialogScale || 1.01);
+  dialog.classList.toggle("is-group-portrait", character.dialogLayout === "group-portrait");
+  dialogPortrait.classList.toggle("is-zoomable", Boolean(character.imageLightbox));
+
+  if (character.imageLightbox) {
+    dialogPortrait.tabIndex = 0;
+    dialogPortrait.setAttribute("role", "button");
+    dialogPortrait.setAttribute("aria-label", `滿版查看 ${character.name} 的角色圖片`);
+  } else {
+    dialogPortrait.removeAttribute("tabindex");
+    dialogPortrait.removeAttribute("role");
+    dialogPortrait.removeAttribute("aria-label");
+  }
 
   dialogImage.src = character.image;
   dialogImage.alt = character.imageAlt;
   dialogImage.style.objectPosition = character.dialogPosition || character.cardPosition || "50% 50%";
+  dialogImage.style.objectFit = character.dialogFit || "cover";
 
   renderCharacterDialog(character, initialModeId);
   dialog.showModal();
   dialogName.tabIndex = -1;
   dialogName.focus({ preventScroll: true });
+}
+
+function openDialogImageLightbox() {
+  const character = characters.find((item) => item.id === activeDialogCharacterId);
+  if (!character?.imageLightbox) return;
+
+  imageLightboxImage.src = character.image;
+  imageLightboxImage.alt = character.imageAlt;
+  imageLightbox.showModal();
+  imageLightboxClose.focus({ preventScroll: true });
 }
 
 function createRipple(button, event) {
@@ -1273,6 +1511,13 @@ scrollArchive.addEventListener("click", (event) => {
 
 searchInput.addEventListener("input", renderCharacters);
 dialogClose.addEventListener("click", () => dialog.close());
+dialogPortrait.addEventListener("click", openDialogImageLightbox);
+dialogPortrait.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  openDialogImageLightbox();
+});
+imageLightboxClose.addEventListener("click", () => imageLightbox.close());
 dialogModeSwitch.addEventListener("click", (event) => {
   const trigger = event.target.closest("[data-dialog-mode]");
   if (!trigger) return;
@@ -1302,6 +1547,10 @@ if (typeof systemTheme.addEventListener === "function") {
 
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
+});
+
+imageLightbox.addEventListener("click", (event) => {
+  if (event.target === imageLightbox) imageLightbox.close();
 });
 
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {

@@ -1804,3 +1804,123 @@ html[data-theme="dark"] .card-portrait {
     grid-template-columns: 1fr;
   }
 }
+
+/* The twins keep the archive-sheet dialog; only their 3:4 portrait gets a wider column. */
+.character-dialog.is-group-portrait,
+.character-dialog.is-group-portrait[open] {
+  width: min(calc(100% - 32px), 1240px);
+}
+
+.character-dialog.is-group-portrait .dialog-layout {
+  grid-template-columns: minmax(520px, 1fr) minmax(0, 1fr);
+}
+
+.character-dialog.is-group-portrait .dialog-portrait {
+  background: color-mix(in srgb, var(--dialog-tone-a) 38%, var(--paper));
+}
+
+.character-dialog.is-group-portrait .dialog-portrait img {
+  display: block;
+  object-fit: contain;
+}
+
+.dialog-portrait.is-zoomable {
+  cursor: zoom-in;
+}
+
+.dialog-portrait.is-zoomable:focus-visible {
+  outline: 2px solid var(--dialog-accent);
+  outline-offset: -4px;
+}
+
+.image-lightbox,
+.image-lightbox[open] {
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: #161514;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(22, 21, 20, .96);
+}
+
+.image-lightbox img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(246, 243, 238, .56);
+  border-radius: 0;
+  background: rgba(22, 21, 20, .72);
+  color: #f1efeb;
+  cursor: pointer;
+}
+
+.image-lightbox-close:hover,
+.image-lightbox-close:focus-visible {
+  border-color: #f1efeb;
+  background: rgba(22, 21, 20, .9);
+}
+
+.image-lightbox-close:focus-visible {
+  outline: 2px solid #f1efeb;
+  outline-offset: 3px;
+}
+
+.image-lightbox-close:active {
+  transform: translateY(1px);
+}
+
+.image-lightbox-close .icon {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.6;
+}
+
+@media (max-width: 900px) {
+  .character-dialog.is-group-portrait .dialog-layout {
+    display: block;
+  }
+
+  .character-dialog.is-group-portrait .dialog-portrait {
+    height: min(58dvh, 560px);
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 620px) {
+  .character-dialog.is-group-portrait,
+  .character-dialog.is-group-portrait[open] {
+    width: calc(100% - 12px);
+  }
+
+  .character-dialog.is-group-portrait .dialog-portrait {
+    height: min(54dvh, 480px);
+    min-height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character-dialog.is-group-portrait .dialog-portrait img {
+    animation: none;
+  }
+}
