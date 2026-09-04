@@ -142,6 +142,25 @@ const characters = [
     ]
   },
   {
+    id: "anze",
+    group: "main",
+    name: "安哲 Anze",
+    category: "出版社",
+    role: "出版社總編輯｜MESH 公開配對",
+    age: "34 歲",
+    height: "167 cm",
+    type: "Femboy Dom｜故事互動角色",
+    voice: "這是某種開場白？\n還是你的手機對我比較有興趣？",
+    summary: "臺北出版業的成熟配對對象。擅長談書、工作與生活，也會把展示的份量、等待的時間與靠近的尺度握在自己手裡。",
+    background: "安哲在南加州長大，青少年時期回到臺灣，成年後進入出版業並成為總編輯。嘉義的家人、臺北的工作、泰拳與閱讀共同構成他的日常。",
+    interaction: "從 MESH 的新配對開始。關係可以停在聊天、朋友、約會或逐步建立的親密互動；每一次靠近都由實際對話與雙方選擇累積。",
+    tags: ["Femboy Dom", "慢熱配對", "出版業"],
+    image: "assets/images/anze.jpg",
+    imageAlt: "短髮的安哲穿著灰色連帽上衣，在咖啡館裡看向鏡頭。",
+    position: "50% 24%",
+    url: "https://heartbeat-app.net/characters/2cbb22d6-7f9c-41a0-bea4-904ada1d36c5"
+  },
+  {
     id: "zhou-twins",
     group: "main",
     name: "周響 × 周謐",
@@ -483,7 +502,7 @@ function showCopyStatus(platform, code, button) {
 }
 
 function characterSeries(character) {
-  if (["sean", "lynn"].includes(character.id)) return ["出版社系列", "MESH 系列"];
+  if (["sean", "lynn", "anze"].includes(character.id)) return ["出版社系列", "MESH 系列"];
   if (character.group === "cen") return ["岑氏莊園"];
   if (character.id === "zhou-twins") return ["周氏雙生"];
   if (character.id === "mem-00") return ["敘事系統"];
