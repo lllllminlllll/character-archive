@@ -546,17 +546,6 @@ html[data-theme="light"] .archive-title-mark {
   filter: drop-shadow(0 6px 7px rgba(0, 0, 0, .2));
 }
 
-.index-note-clip {
-  position: absolute;
-  z-index: 3;
-  top: -14%;
-  left: 5%;
-  width: 16%;
-  height: auto;
-  pointer-events: none;
-  transform: rotate(-12deg);
-}
-
 .index-instruction p {
   position: relative;
   z-index: 1;
@@ -913,11 +902,11 @@ html[data-theme="light"] .archive-title-mark {
   z-index: 8;
   top: clamp(8px, 1.1vw, 16px);
   left: 50%;
-  width: clamp(190px, 43%, 320px);
+  width: clamp(190px, 43%, 310px);
   height: auto;
   pointer-events: none;
   transform: translateX(-50%);
-  filter: none;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .28));
 }
 
 html[data-theme="light"] .profile-clipboard {
@@ -2236,8 +2225,8 @@ html[data-theme="light"] .profile-clipboard {
 
   .index-heading {
     display: grid;
-    grid-template-columns: minmax(106px, .82fr) minmax(150px, 1.18fr);
-    gap: 18px;
+    grid-template-columns: minmax(96px, .72fr) minmax(180px, 1.4fr);
+    gap: 10px;
     align-items: start;
   }
 
@@ -2246,24 +2235,16 @@ html[data-theme="light"] .profile-clipboard {
   }
 
   .index-instruction {
-    width: 90%;
+    width: 100%;
     min-height: 0;
     aspect-ratio: 2.1 / 1;
     margin: 0;
-    justify-self: end;
-    transform: rotate(-.6deg);
   }
 
   .index-instruction p {
-    width: 78%;
+    width: 82%;
     margin: 0 0 0 9%;
     padding: 0;
-  }
-
-  .index-note-clip {
-    top: -12%;
-    left: 7%;
-    width: 14%;
   }
 
   .character-pockets {
