@@ -492,16 +492,6 @@ html[data-theme="light"] .archive-title-mark {
   padding: 2px 4px clamp(10px, 1.2vw, 18px);
 }
 
-.index-heading::after {
-  content: "";
-  position: absolute;
-  right: 7%;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(35, 37, 38, .34), rgba(35, 37, 38, .12), transparent);
-}
-
 .index-heading h1 {
   order: -1;
   width: clamp(142px, 34%, 218px);
@@ -1012,10 +1002,12 @@ html[data-theme="light"] .profile-clipboard {
 .tracing-paper-flap {
   position: absolute;
   z-index: 5;
-  top: 8%;
-  right: -4%;
-  bottom: 23%;
-  width: 58%;
+  top: auto;
+  right: auto;
+  bottom: 3%;
+  left: -5%;
+  width: 64%;
+  height: 14%;
   border: 1px solid rgba(255, 255, 250, .54);
   background:
     repeating-linear-gradient(9deg, rgba(58, 57, 52, .045) 0 1px, transparent 1px 6px),
@@ -2270,9 +2262,12 @@ html[data-theme="light"] .profile-clipboard {
   }
 
   .tracing-paper-flap {
-    right: -2%;
-    width: 48%;
-    opacity: .34;
+    right: auto;
+    bottom: 4%;
+    left: -2%;
+    width: 56%;
+    height: 12%;
+    opacity: .3;
   }
 
   .profile-copy h2 {
