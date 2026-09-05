@@ -304,6 +304,9 @@ const characters = [
 
 const root = document.documentElement;
 const archiveShell = document.querySelector("#archive-shell");
+const binder = document.querySelector("#binder");
+const bookPageNav = document.querySelector("#book-page-nav");
+const bookPageButtons = [...bookPageNav.querySelectorAll("[data-book-page]")];
 const cover = document.querySelector("#binder-cover");
 const closeArchiveButton = document.querySelector("#close-archive");
 const statusLine = document.querySelector("#status-line");
@@ -353,10 +356,37 @@ let selectedPanel = "summary";
 let sheetAnimation;
 let panelAnimation;
 let copyStatusTimer;
+let bookPageFrame;
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+const pagedBookLayout = window.matchMedia("(max-width: 900px)");
 const saveData = navigator.connection?.saveData === true;
+
+function updateBookPageButtons(page) {
+  bookPageButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.bookPage === page));
+  });
+}
+
+function setBookPage(page, { behavior = "smooth" } = {}) {
+  updateBookPageButtons(page);
+  if (!pagedBookLayout.matches) return;
+
+  binder.scrollTo({
+    left: page === "profile" ? binder.clientWidth : 0,
+    behavior: reducedMotion.matches ? "auto" : behavior
+  });
+}
+
+function syncBookPageFromScroll() {
+  if (!pagedBookLayout.matches || bookPageFrame) return;
+  bookPageFrame = window.requestAnimationFrame(() => {
+    const page = binder.scrollLeft >= binder.clientWidth / 2 ? "profile" : "index";
+    updateBookPageButtons(page);
+    bookPageFrame = null;
+  });
+}
 
 function canAutoplayMotion() {
   return !reducedMotion.matches && !saveData && document.visibilityState === "visible";
@@ -635,12 +665,14 @@ function renderProfile({ animate = true } = {}) {
   }
 }
 
-function selectCharacter(index, focus = false) {
+function selectCharacter(index, focus = false, showProfile = false) {
   selectedIndex = (index + characters.length) % characters.length;
   selectedModeId = characters[selectedIndex].modes?.[0]?.id || "";
   selectedPanel = "summary";
   tabButtons.forEach((button) => button.setAttribute("aria-selected", String(button.dataset.panel === "summary")));
   renderProfile();
+
+  if (showProfile) setBookPage("profile");
 
   if (focus) {
     characterList.querySelector(`[data-index="${selectedIndex}"]`)?.focus();
@@ -681,6 +713,7 @@ function openArchive() {
   cover.setAttribute("aria-expanded", "true");
   statusLine.textContent = `已開啟 ${characters[selectedIndex].name}`;
   playProfileVideo();
+  window.requestAnimationFrame(() => setBookPage("index", { behavior: "auto" }));
   window.setTimeout(() => characterList.querySelector(".character-pocket")?.focus({ preventScroll: true }), 420);
 }
 
@@ -691,6 +724,7 @@ function closeArchive() {
   cover.setAttribute("aria-expanded", "false");
   statusLine.textContent = "檔案冊已上鎖";
   pauseProfileVideo({ reset: true });
+  setBookPage("index", { behavior: "auto" });
   cover.focus();
 }
 
@@ -746,6 +780,16 @@ referralList.addEventListener("click", async (event) => {
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => applyThemePreference(button.dataset.themeValue));
 });
+bookPageNav.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-book-page]");
+  if (button) setBookPage(button.dataset.bookPage);
+});
+binder.addEventListener("scroll", syncBookPageFromScroll, { passive: true });
+pagedBookLayout.addEventListener("change", () => {
+  binder.scrollTo({ left: 0, behavior: "auto" });
+  updateBookPageButtons("index");
+  bookPageFrame = null;
+});
 systemTheme.addEventListener("change", () => {
   if (root.dataset.themePreference === "auto") applyThemePreference("auto", false);
 });
@@ -755,7 +799,7 @@ profileVideo.addEventListener("pause", syncMotionState);
 characterList.addEventListener("click", (event) => {
   const button = event.target.closest(".character-pocket");
   if (!button) return;
-  selectCharacter(Number(button.dataset.index));
+  selectCharacter(Number(button.dataset.index), false, true);
 });
 
 characterList.addEventListener("keydown", (event) => {
@@ -844,6 +888,7 @@ document.addEventListener("visibilitychange", () => {
 });
 window.addEventListener("pagehide", () => {
   window.clearTimeout(copyStatusTimer);
+  if (bookPageFrame) window.cancelAnimationFrame(bookPageFrame);
   sheetAnimation?.cancel();
   panelAnimation?.cancel();
   pauseProfileVideo();

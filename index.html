@@ -17,7 +17,7 @@
     } catch {}
   </script>
   <link rel="icon" type="image/png" href="assets/images/min-logo-favicon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260905-2">
 </head>
 <body>
   <div class="ambient-texture" aria-hidden="true"></div>
@@ -46,7 +46,12 @@
 
   <main class="archive-stage" id="archive">
     <div class="archive-shell" id="archive-shell">
-      <section class="binder" aria-label="角色檔案冊">
+      <nav class="book-page-nav" id="book-page-nav" aria-label="手帳頁面">
+        <button type="button" data-book-page="index" aria-pressed="true">角色索引</button>
+        <button type="button" data-book-page="profile" aria-pressed="false">角色檔案</button>
+      </nav>
+
+      <section class="binder" id="binder" aria-label="A6 角色檔案手帳">
         <div class="page page-left">
           <span class="vertical-index vertical-index-left" aria-hidden="true">CHARACTER INDEX / PUBLIC ARCHIVE</span>
           <div class="page-glare" aria-hidden="true"></div>
@@ -229,6 +234,6 @@
     <img id="image-dialog-image" src="" alt="">
   </dialog>
 
-  <script src="app.js?v=20260904-1" defer></script>
+  <script src="app.js?v=20260905-2" defer></script>
 </body>
 </html>
